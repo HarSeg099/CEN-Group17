@@ -2,11 +2,17 @@ const mongoose = require('mongoose')
 
 
 const productSchema = new mongoose.Schema({
-    name:{
+    title:{
         type:String,
         required: [true, 'Please enter product name'],
         trim: true,
         maxLength: [100,'Product name cannot exceed 100 characters']
+    },
+    author:{
+        type:String,
+        required: [true, 'Please enter product author'],
+        trim: true,
+        maxLength: [100,'Product author cannot exceed 100 characters']
     },
     price:{
         type: Number,
@@ -14,32 +20,12 @@ const productSchema = new mongoose.Schema({
         maxLength: [5,'Product price cannot exceed 5 characters'],
         default: 0.0
     },
-    description:{
-        type:String,
-        required: [true, 'Please enter product description']
-    },
-    ratings:{
-        type: Number,
-        default: 0
-    },
-    images:[
-        {
-        public_id:{
-            type: String,
-            required: true
-        },
-        url:{
-            type: String,
-            required: true
-        }
-     }
-    ],
     genre: {
         type: String,
         required: [true, 'Please select genre for this product'],
         enum: {
             values: [
-                'Action',
+                'Action fiction',
                 'Adventure',
                 'Classics',
                 'Comic',
@@ -54,15 +40,35 @@ const productSchema = new mongoose.Schema({
             messsage: 'Please select correct category for book'
         }
     },
-    publishInfo:{
+    description:{
+        type:String,
+        required: [true, 'Please enter product description']
+    },
+    cover:[
+        {
+        public_id:{
+            type: String,
+            required: true
+        },
+        url:{
+            type: String,
+            required: true
+        }
+     }
+    ],
+    publisher:{
+        type:String,
+        required: [true, 'Please enter product author'],
+        trim: true,
+        maxLength: [100,'Product author cannot exceed 100 characters']
+    },
+    authorDesc:{
         type:String,
         required: [true, 'Please enter published information.']
     },
-    stock: {
+    ratings:{
         type: Number,
-        required: [true, 'Please enter product stock'],
-        maxLength: [5, 'Product stock canot esceed 5 characters'],
-        default:0
+        default: 0
     },
     numOfReviews: {
         type: Number,

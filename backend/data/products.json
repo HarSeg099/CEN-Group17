@@ -1,18 +1,20 @@
 [
     {
-        "name":"Things Fall Apart",
-        "price":"24.50",
-        "description":"The novel follows the life of Okonkwo, an Igbo man and local wrestling champion in the fictional Nigerian clan of Umuofia. The work is split into three parts, with the first describing his family, personal history, and the customs and society of the Igbo, and the second and third sections introducing the influence of European colonialism and Christian missionaries on Okonkwo, his family, and the wider Igbo community.",
-        "ratings":3.5,
-        "images":[{
-            "public_id": "products/tzfsnrli3szrdnb4jgge",
-            "url": "http://res.coudinary.com/shopit/image/upload/v1606231282/products/tzfsnrli3szrdnb4jgge.jpg"
-         }],
-        "genre": "Novel",
-        "publishInfo":"Achebe, Chinua. The African Trilogy. (London: Everyman's Library, 2010) ISBN 9781841593272. Edited with an introduction by Chimamanda Ngozi Adichie. The book collects Things Fall Apart, No Longer at Ease, and Arrow of God in one volume.",
-        "stock": 50,
-        "numOfReviews": 6,
-        "reviews": []
+     "title": "The Hunger Games",
+     "author": "Suzanne Collins",
+     "genre": "Action fiction",
+      "description": "In the ruins of a place once known as North America lies the nation of Panem, a shining Capitol surrounded by twelve outlying districts. The Capitol is harsh and cruel and keeps the districts in line by forcing them all to send one boy and one girl between the ages of twelve and eighteen to participate in the annual Hunger Games, a fight to the death on live TV.",
+     "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1586722975l/2767052.jpg",
+      "date": {
+       "$date": "2008-08-14T04:00:00Z"
+      },
+     "publisher": "Scholastic Corp.",
+     "authorDesc": "Since 1991, Suzanne Collins has been busy writing for children’s television. She has worked on the staffs of several Nickelodeon shows, including the Emmy-nominated hit Clarissa Explains it All and The Mystery Files of Shelby Woo. For preschool viewers, she penned multiple stories for the Emmy-nominated Little Bear and Oswald. She also co-wrote the critically acclaimed Rankin/Bass Christmas special, Santa, Baby! Most recently she was the Head Writer for Scholastic Entertainment’s Clifford’s Puppy Days.",
+     "price": 5.99,
+      "ratings":3.5,
+     "numOfReviews": 6,
+     "reviews": [],
+     "topSeller": true
     }
 
 ]
