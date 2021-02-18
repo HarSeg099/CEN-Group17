@@ -8,6 +8,7 @@ const productSchema = new mongoose.Schema({
         trim: true,
         maxLength: [100,'Product name cannot exceed 100 characters']
     },
+    
     author:{
         type:String,
         required: [true, 'Please enter product author'],
