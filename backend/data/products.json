@@ -1,0 +1,18 @@
+[
+    {
+        "name":"Things Fall Apart",
+        "price":"24.50",
+        "description":"The novel follows the life of Okonkwo, an Igbo man and local wrestling champion in the fictional Nigerian clan of Umuofia. The work is split into three parts, with the first describing his family, personal history, and the customs and society of the Igbo, and the second and third sections introducing the influence of European colonialism and Christian missionaries on Okonkwo, his family, and the wider Igbo community.",
+        "ratings":3.5,
+        "images":[{
+            "public_id": "products/tzfsnrli3szrdnb4jgge",
+            "url": "http://res.coudinary.com/shopit/image/upload/v1606231282/products/tzfsnrli3szrdnb4jgge.jpg"
+         }],
+        "genre": "Novel",
+        "publishInfo":"Achebe, Chinua. The African Trilogy. (London: Everyman's Library, 2010) ISBN 9781841593272. Edited with an introduction by Chimamanda Ngozi Adichie. The book collects Things Fall Apart, No Longer at Ease, and Arrow of God in one volume.",
+        "stock": 50,
+        "numOfReviews": 6,
+        "reviews": []
+    }
+
+]
