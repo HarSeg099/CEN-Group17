@@ -29,13 +29,18 @@ const productSchema = new mongoose.Schema({
                 'Action fiction',
                 'Adventure',
                 'Classics',
-                'Comic',
+                'Children fiction',
                 'Crime',
-                'Fantasy',
-                'Horror',
+                'Dystopian fiction',
+                'Fantasy fiction',
+                'Historical fiction',
+                'Horror fiction',
                 'Mystery',
                 'Novel',
-                'Romance',
+                'Philosophical fiction',
+                'Realistic fiction',
+                'Religious fiction',
+                'Romantic fiction',
                 'Science Fiction'
             ],
             messsage: 'Please select correct category for book'
@@ -45,18 +50,10 @@ const productSchema = new mongoose.Schema({
         type:String,
         required: [true, 'Please enter product description']
     },
-    cover:[
-        {
-        public_id:{
+    cover:{
             type: String,
             required: true
-        },
-        url:{
-            type: String,
-            required: true
-        }
-     }
-    ],
+    },
     publisher:{
         type:String,
         required: [true, 'Please enter product author'],
