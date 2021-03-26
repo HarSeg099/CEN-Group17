@@ -74,9 +74,15 @@ const productSchema = new mongoose.Schema({
     },
     reviews: [
         {
-            name: {
-                type: String,
+            user: {
+                type: mongoose.Schema.ObjectId,
+                ref: 'User',
                 required: true
+            },
+            nickname: {
+                type: String,
+                required: true,
+                default: "Anonymous"
             },
             rating: {
                 type: Number,
@@ -88,6 +94,11 @@ const productSchema = new mongoose.Schema({
             }
         }
     ],
+    user: {
+        type: mongoose.Schema.ObjectId,
+        ref: 'User',
+        required: true
+    },
     createdAt: {
         type: Date,
         default: Date.now
