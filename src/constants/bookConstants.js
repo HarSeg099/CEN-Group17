@@ -1,0 +1,6 @@
+export const ALL_BOOKS_REQUEST = 'ALL_BOOKS_REQUEST'
+export const ALL_BOOKS_SUCCESS = 'ALL_BOOKS_SUCCESS'
+export const ALL_BOOKS_FAIL = 'ALL_BOOKS_FAIL'
+
+
+export const CLEAR_ERRORS = 'CLEAR_ERRORS'
