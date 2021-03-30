@@ -1,0 +1,21 @@
+{
+  "name": "store",
+  "version": "1.0.0",
+  "description": "Bookstore",
+  "main": "server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "dev" : "SET NODE_ENV=DEVELOPMENT& nodemon backend/server",
+    "prod": "SET NODE_ENV=PRODUCTION& nodemon backend/server"
+  },
+  "author": "Harold",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.11.18"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
