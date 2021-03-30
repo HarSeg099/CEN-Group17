@@ -23,7 +23,7 @@ const ProductDetails = ({ match }) => {
 
     const {loading, error, product } = useSelector(state => state.productDetails);
     const {user } = useSelector(state => state.auth);
-    //const{order} = useSelector(state => state.myOrders);
+    const{order} = useSelector(state => state.myOrders);
     //const {userdetails } = useSelector(state => state.userDetails)
     const { error: reviewError, success } = useSelector(state => state.newReview);
 
@@ -81,6 +81,7 @@ const ProductDetails = ({ match }) => {
             })
         }
     }
+   
     function getIdentification(){//handle nickname choices
         var nickName = "Anonymous";    
         var value = document.getElementById('input').value;
@@ -121,7 +122,6 @@ const ProductDetails = ({ match }) => {
             <div className="rating-outer">
                 <div className="rating-inner" style={{ width: `${(product.ratings / 5 ) * 100 }%` }}></div>
             </div>
-            <span id="no_of_reviews">({product.numOfRiviews} Reviews)</span>
 
             <hr/>
 
@@ -184,7 +184,7 @@ const ProductDetails = ({ match }) => {
                                     
                                     <div className="container" >
                                     <h3> Select Identification </h3>
-                                  
+                                    
                                     <select id="input" onChange={()=>getIdentification()}>
                                     <option >Select: </option>
                                     <option value="nickname">Nickname </option>
