@@ -11,7 +11,7 @@ exports.registerUser = catchAsyncErrors(async (req, res, next) => {
     const user = await User.create({
         name,
         ID,
-        password,
+        password
     })
     sendToken(user, 200, res)
 })
