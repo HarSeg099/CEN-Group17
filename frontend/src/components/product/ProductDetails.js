@@ -15,15 +15,17 @@ const ProductDetails = ({ match }) => {
 
     const [rating, setRating] = useState(0);
     const [comment, setComment] = useState('');
-    const [nickname, setNickname] = useState('Anonymous');
 
     const dispatch = useDispatch();
     const alert = useAlert();
+    const formData = new FormData();
+    
 
     const {loading, error, product } = useSelector(state => state.productDetails);
-    const {user } = useSelector(state => state.auth)
+    const {user } = useSelector(state => state.auth);
+    //const{order} = useSelector(state => state.myOrders);
     //const {userdetails } = useSelector(state => state.userDetails)
-    const { error: reviewError, success } = useSelector(state => state.newReview)
+    const { error: reviewError, success } = useSelector(state => state.newReview);
 
     useEffect(() => {
         dispatch(getProductDetails(match.params.id))
@@ -79,13 +81,21 @@ const ProductDetails = ({ match }) => {
             })
         }
     }
+    function getIdentification(){//handle nickname choices
+        var nickName = "Anonymous";    
+        var value = document.getElementById('input').value;
+
+        if(value === "nickname"){
+             nickName = user.nickname;
+        }
+        document.getElementById('output').innerHTML= nickName;
+        formData.set('nickname', nickName);
+    }
      
     const reviewHandler = () => {
-        const formData = new FormData();
 
         formData.set('rating', rating);
         formData.set('comment', comment);
-        formData.set('nickname', nickname);
         formData.set('productId', match.params.id);
 
         dispatch(newReview(formData));
@@ -139,9 +149,9 @@ const ProductDetails = ({ match }) => {
              { user ? <button id="review_btn" type="button" className="btn btn-primary mt-4" data-toggle="modal" data-target="#ratingModal"
              onClick={setUserRatings}>
                         Submit Your Review
-            </button>//if user login display the botton
+            </button>//if user login display the botton //if user purchased the book the order status must be delivered
             :
-               <div className="alert alert-dager mt-5" type='alert'> Login to post your review. </div>
+               <div className="alert alert-dager mt-5" type='alert'> You can only comment about a book that you bought, Login to post your review. </div>
             } 
             
             
@@ -172,12 +182,18 @@ const ProductDetails = ({ match }) => {
 
                                     </textarea>
                                     
-
-                                    <select>
-                                    <option value="Select your identification">Select your identification: </option>
-                                    <option value={nickname}onChange={(e) => setNickname(product.nickname)}>Use nickname</option>
-                                    <option value="anonymous">Remain anonymous</option>
+                                    <div className="container" >
+                                    <h3> Select Identification </h3>
+                                  
+                                    <select id="input" onChange={()=>getIdentification()}>
+                                    <option >Select: </option>
+                                    <option value="nickname">Nickname </option>
+                                    <option value="anonymous">Anonymous</option>
                                     </select>
+                                    <div id="output">
+
+                                    </div>
+                                    </div>
 
                                     <button className="btn my-3 float-right review-btn px-4 text-white" 
                                     onClick= {reviewHandler}
