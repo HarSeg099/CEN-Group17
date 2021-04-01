@@ -1,0 +1,28 @@
+{
+  "name": "geek_text",
+  "version": "1.0.0",
+  "description": "bookstore site using mern stack",
+  "main": "server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "dev": "set NODE_ENV=DEVELOPMENT& nodemon backend/server",
+    "prod": "set NODE_ENV=PRODUCTION& nodemon backend/server",
+    "seeder": "node backend/utils/seeder.js"
+  },
+  "author": "Leonel Santos",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.12.2",
+    "nodemailer": "^6.5.0",
+    "validator": "^13.5.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  }
+}
