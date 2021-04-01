@@ -11,7 +11,7 @@ import {
     NEW_REVIEW_REQUEST,
     NEW_REVIEW_SUCCESS,
     NEW_REVIEW_FAIL,
-   // NEW_REVIEW_RESET 
+    NEW_REVIEW_RESET 
 } from '../constants/productConstants'
     
 export const getProducts = (keyword = '', category, rating=0) => async (dispatch) => {

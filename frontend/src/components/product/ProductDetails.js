@@ -23,7 +23,7 @@ const ProductDetails = ({ match }) => {
 
     const {loading, error, product } = useSelector(state => state.productDetails);
     const {user } = useSelector(state => state.auth);
-    const{order} = useSelector(state => state.myOrders);
+    //const{orders} = useSelector(state => state.orderDetails);
     //const {userdetails } = useSelector(state => state.userDetails)
     const { error: reviewError, success } = useSelector(state => state.newReview);
 
@@ -81,8 +81,19 @@ const ProductDetails = ({ match }) => {
             })
         }
     }
+    /*function orderDelivered(){
+
+        var delivered = true;
+
+        if(orders.orderStatus === "Delivered" )
+        delivered = true;
+        else
+        delivered = false;
+
+        return delivered;
+    }*/
    
-    function getIdentification(){//handle nickname choices
+    function getIdentification(){//handling nickname choices
         var nickName = "Anonymous";    
         var value = document.getElementById('input').value;
 
@@ -107,6 +118,7 @@ const ProductDetails = ({ match }) => {
         <Fragment>
        {loading ? <Loader /> : (
            <Fragment>
+           <MetaData title={product.name}/>
                 <div className="row f-flex justify-content-around">
         <div className="col-12 col-lg-5 img-fluid" id="product_image">
         <img
@@ -214,7 +226,7 @@ const ProductDetails = ({ match }) => {
         {product.reviews && product.reviews.length > 0 && (
                         <ListReviews reviews={product.reviews} />
                     )}
-
+                     
          </Fragment>
        )}
     </Fragment>
