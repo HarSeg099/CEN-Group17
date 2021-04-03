@@ -7,8 +7,9 @@ import { register, clearErrors } from '../../actions/userActions'
 
 const Register = ({ history }) => {
 
-    const [name, setName] = useState('')
+    const [name, setName] = useState('');
     const [ID, setID] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
     const dispatch = useDispatch();
@@ -30,7 +31,7 @@ const Register = ({ history }) => {
     const submitHandler = (e) => {
         e.preventDefault();
 
-        dispatch(register(name, ID, password))
+        dispatch(register(name, ID, email, password))
     }
 
     return (
@@ -64,6 +65,18 @@ const Register = ({ history }) => {
                                 name='ID'
                                 value={ID}
                                 onChange={(e) => setID(e.target.value)}
+                            />
+                        </div>
+
+                        <div className="form-group">
+                            <label htmlFor="email_field">email</label>
+                            <input
+                                type="email"
+                                id="email_field"
+                                className="form-control"
+                                name='email'
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
                             />
                         </div>
 
