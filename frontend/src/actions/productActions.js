@@ -14,7 +14,7 @@ import {
     NEW_REVIEW_RESET 
 } from '../constants/productConstants'
     
-export const getProducts = (currentPage = 2) => async (dispatch) => {
+export const getProducts = (currentPage = 1) => async (dispatch) => {
     try {
     
         dispatch({ type: ALL_PRODUCTS_REQUEST })
