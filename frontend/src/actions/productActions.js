@@ -14,7 +14,7 @@ import {
     NEW_REVIEW_RESET 
 } from '../constants/productConstants'
     
-export const getProducts = (currentPage = 1) => async (dispatch) => {
+export const getProducts = (keyword='', currentPage = 1) => async (dispatch) => {
     try {
     
         dispatch({ type: ALL_PRODUCTS_REQUEST })
@@ -26,7 +26,7 @@ export const getProducts = (currentPage = 1) => async (dispatch) => {
          //   }
     
        // const { data } = await axios.get(link)
-    const{data} = await axios.get(`/api/v1/products?page=${currentPage}`);
+    const{data} = await axios.get(`/api/v1/products?keyword=${keyword}&page=${currentPage}`);
 
         dispatch({
             type: ALL_PRODUCTS_SUCCESS,

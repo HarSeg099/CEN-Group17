@@ -1,5 +1,7 @@
 import React,{Fragment, useState, useEffect} from 'react'
 import Pagination from 'react-js-pagination'
+//import Slider from 'rc-slider'
+//import 'rc-slider/assets/index.css';
 
 import MetaData from './layout/MetaData'
 import Product from './product/Product'
@@ -9,7 +11,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getProducts } from '../actions/productActions'
 import { useAlert } from 'react-alert'
 
-const Home = () => {
+const Home = ({match}) => {
 
     const [currentPage, setCurrentPage] = useState(1)    
     const [rating, setRating] = useState(0)
@@ -19,15 +21,17 @@ const Home = () => {
 
     const { loading, products, error, productsCount,  resPerPage } = useSelector(state => state.products)
 
+    const keyword = match.params.keyword
+
     useEffect(() => {
 
         if(error){
             return alert.error(error)
         }
 
-        dispatch(getProducts(currentPage,rating));
+        dispatch(getProducts(keyword, currentPage,rating));
         
-    }, [dispatch,error, alert,currentPage,rating])
+    }, [dispatch,error, alert,currentPage,keyword,rating])
 
     function setCurrentPageNo(pageNumber) {
         setCurrentPage(pageNumber)
