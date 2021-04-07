@@ -14,19 +14,25 @@ import {
     NEW_REVIEW_RESET 
 } from '../constants/productConstants'
     
-export const getProducts = (keyword='', currentPage = 1) => async (dispatch) => {
+export const getProducts = (keyword='', currentPage = 1,price, genre, rating = 0, topSeller) => async (dispatch) => {
     try {
     
         dispatch({ type: ALL_PRODUCTS_REQUEST })
     
-         //   let link = `/api/v1/products?ratings[gte]=${rating}`
+            let link = `/api/v1/products?keyword=${keyword}&page=${currentPage}&price[lte]=${price[1]}&price[gte]=${price[0]}&ratings[gte]=${rating}`
     
-         //   if (category) {
-         //       link = `/api/v1/products?ratings[gte]=${rating}`
-         //   }
+            if(genre) {
+                link = `/api/v1/products?keyword=${keyword}&page=${currentPage}&price[lte]=${price[1]}&price[gte]=${price[0]}&genre=${genre}&ratings[gte]=${rating}`
+            }
     
-       // const { data } = await axios.get(link)
-    const{data} = await axios.get(`/api/v1/products?keyword=${keyword}&page=${currentPage}`);
+            if(topSeller){
+                link = `/api/v1/products?keyword=${keyword}&page=${currentPage}&price[lte]=${price[1]}&price[gte]=${price[0]}&ratings[gte]=${rating}&topSeller=${topSeller}`
+            }
+    
+            if(topSeller && genre) {
+                link = `/api/v1/products?keyword=${keyword}&page=${currentPage}&price[lte]=${price[1]}&price[gte]=${price[0]}&ratings[gte]=${rating}&topSeller=${topSeller}&genre=${genre}`
+            }
+     const{data} = await axios.get(link);
 
         dispatch({
             type: ALL_PRODUCTS_SUCCESS,

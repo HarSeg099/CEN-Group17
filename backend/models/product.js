@@ -103,6 +103,7 @@ const productSchema = new mongoose.Schema({
         ref: 'User',
         required: true
     },
+    topSeller: Boolean,
     createdAt: {
         type: Date,
         default: Date.now
