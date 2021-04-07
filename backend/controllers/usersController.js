@@ -6,11 +6,12 @@ const sendToken = require('../utils/jwtToken');
 
 //Register a user => /api/v1/register
 exports.registerUser = catchAsyncError( async (req, res, next) => {
-    const { name, nickname, email, password } = req.body;
+    const { name, nickname, ID, email, password } = req.body;
 
     const user = await User.create({
         name,
         nickname,
+        ID,
         email,
         password
     })
@@ -20,18 +21,18 @@ exports.registerUser = catchAsyncError( async (req, res, next) => {
 
 //login user => /a/i/v1/login
 exports.loginUser = catchAsyncError( async(req, res, next ) => {
-    const { email, password } = req.body;
+    const { ID, password } = req.body;
 
     //checks if email and password are good
-    if(!email || !password){
-        return next(new ErrorHandler('Please enter email and password',400))
+    if(!ID || !password){
+        return next(new ErrorHandler('Please enter ID and password',400))
     }
 
     //Findinf user in database
-    const user = await User.findOne({ email }).select('+password')
+    const user = await User.findOne({ ID }).select('+password')
 
     if(!user) {
-        return next(new ErrorHandler('Invalid email ',401));
+        return next(new ErrorHandler('Invalid ID ',401));
     }
 
     //check if password is correct
@@ -54,6 +55,26 @@ exports.getUserProfile = catchAsyncError(async (req, res, next) => {
         user
     })
 })
+
+/*exports.updateProfile = catchAsyncErrors(async (req, res, next) => {
+    const newUserData = {
+        name: req.body.name,
+        nickname: req.body.nickname,
+        ID: req.body.ID,
+        email: req.body.email,
+        //creditCard: req.body.creditCard,
+       // shippingAddress: req.body.shippingAddress
+    }
+
+    const user = await User.findByIdAndUpdate(req.user.id, newUserData, {
+        new: true,
+        runValidators: true,
+        useFindAndModify: false
+    })
+    res.status(200).json({
+        success: true
+    })
+})*/
 
 // Logout user   =>   /api/v1/logout
 exports.logout = catchAsyncError(async (req, res, next) => {

@@ -14,6 +14,11 @@ const userSchema = new mongoose.Schema({
         required: [true, 'Please enter your name'],
         maxlength: [30,'Your name cannot exceed 30 characters']
     },
+    ID: {
+        type: String,
+        required: [true, 'Please enter ID'],
+        unique: true,
+    },
     email:{
         type: String,
         required:[true, 'Please enter your email'],
@@ -26,6 +31,18 @@ const userSchema = new mongoose.Schema({
         minlength: [6, 'Your password must be longer than 6 characters'],
         select: false
     }, 
+    creditCard: { 
+        type: Object,
+        number: {type: Number},
+        expDate: {type: String},
+        cvv: {type: Number},
+    },
+    shippingAddress:{  
+        type: Object,
+        streetAddress: {type: String},
+        city: {type: String},
+        zipCode: {type: String}
+    },
     role:{
         type: String,
         default: 'user'

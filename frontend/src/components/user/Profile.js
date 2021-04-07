@@ -8,6 +8,25 @@ import MetaData from '../layout/MetaData'
 const Profile = () => {
 
     const { user, loading } = useSelector(state => state.auth)
+    var number, expDate, cvv, streetAddress, city, zipCode
+    if (loading === false && user.creditCard !== undefined && user.shippingAddress !== undefined){  
+        number = user.creditCard.number
+        expDate = user.creditCard.expDate
+        cvv = user.creditCard.cvv
+        streetAddress = user.shippingAddress.streetAddress
+        city = user.shippingAddress.city
+        zipCode = user.shippingAddress.zipCode
+    }
+    let creditcard = { 
+        'number': number,
+        'expDate': expDate,
+        'cvv': cvv
+    }
+    let shippingaddress = {
+        'streetAddress': streetAddress,
+        'city': city,
+        'zipCode': zipCode
+    }
 
     return (
         <Fragment>
@@ -30,8 +49,29 @@ const Profile = () => {
                             <h4>Nickname</h4>
                             <p>{user.nickname}</p>
 
+                            <h4>ID</h4>
+                            <p>{user.ID}</p>
+
                             <h4>Email Address</h4>
                             <p>{user.email}</p>
+
+                            <h4>CreditCard Number</h4>
+                            <p>{creditcard.number}</p> 
+
+                            <h4>Expiration Date</h4>
+                            <p>{creditcard.expDate}</p>
+
+                            <h4>CVV</h4>
+                            <p>{creditcard.cvv}</p>  
+                            
+                            <h4>Street Address</h4>
+                            <p>{shippingaddress.streetAddress}</p>
+
+                            <h4>City</h4>
+                            <p>{shippingaddress.city}</p>
+
+                            <h4>Zip Code</h4>
+                            <p>{shippingaddress.zipCode}</p> 
 
                             <h4>Joined On</h4>
                             <p>{String(user.createdAt).substring(0, 10)}</p>
@@ -41,10 +81,6 @@ const Profile = () => {
                                     My Orders
                                 </Link>
                             )}
-
-                            <Link to="/password/update" className="btn btn-primary btn-block mt-3">
-                                Change Password
-                            </Link>
                         </div>
                     </div>
                 </Fragment>

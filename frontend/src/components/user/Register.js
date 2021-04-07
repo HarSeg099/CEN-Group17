@@ -7,8 +7,13 @@ import { useDispatch, useSelector } from 'react-redux'
 import { register, clearErrors } from '../../actions/userActions'
 
 const Register = ({ history }) => {
+    const [name, setName] = useState('');
+    const [nickname, setnickname] = useState('');
+    const [ID, setID] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
 
-    const [user, setUser] = useState({
+   /* const [user, setUser] = useState({
         name: '',
         email: '',
         password: '',
@@ -18,7 +23,7 @@ const Register = ({ history }) => {
 
     const [avatar, setAvatar] = useState('')
     const [avatarPreview, setAvatarPreview] = useState('/images/default_avatar.jpg')
-
+*/
     const alert = useAlert();
     const dispatch = useDispatch();
 
@@ -42,14 +47,16 @@ const Register = ({ history }) => {
 
         const formData = new FormData();
         formData.set('name', name);
+        formData.set('nickname', nickname);
         formData.set('email', email);
+        formData.set('ID', ID);
         formData.set('password', password);
-        formData.set('avatar', avatar);
+        //formData.set('avatar', avatar);
 
         dispatch(register(formData))
     }
 
-    const onChange = e => {
+    /*const onChange = e => {
         if (e.target.name === 'avatar') {
 
             const reader = new FileReader();
@@ -66,7 +73,7 @@ const Register = ({ history }) => {
         } else {
             setUser({ ...user, [e.target.name]: e.target.value })
         }
-    }
+    }*/
 
     return (
         <Fragment>
@@ -86,7 +93,29 @@ const Register = ({ history }) => {
                                 className="form-control"
                                 name='name'
                                 value={name}
-                                onChange={onChange}
+                                onChange={(e) => setName(e.target.value)}
+                            />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="nickname_field">nickname</label>
+                            <input
+                                type="nickname"
+                                id="nickname_field"
+                                className="form-control"
+                                name='nickname'
+                                value={nickname}
+                                onChange={(e) => setnickname(e.target.value)}
+                            />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="ID_field">ID</label>
+                            <input
+                                type="ID"
+                                id="ID_field"
+                                className="form-control"
+                                name='ID'
+                                value={ID}
+                                onChange={(e) => setID(e.target.value)}
                             />
                         </div>
 
@@ -98,7 +127,7 @@ const Register = ({ history }) => {
                                 className="form-control"
                                 name='email'
                                 value={email}
-                                onChange={onChange}
+                                onChange={(e) => setEmail(e.target.value)}
                             />
                         </div>
 
@@ -110,37 +139,10 @@ const Register = ({ history }) => {
                                 className="form-control"
                                 name='password'
                                 value={password}
-                                onChange={onChange}
+                                onChange={(e) => setPassword(e.target.value)}
                             />
                         </div>
 
-                        <div className='form-group'>
-                            <label htmlFor='avatar_upload'>Avatar</label>
-                            <div className='d-flex align-items-center'>
-                                <div>
-                                    <figure className='avatar mr-3 item-rtl'>
-                                        <img
-                                            src={avatarPreview}
-                                            className='rounded-circle'
-                                            alt='Avatar Preview'
-                                        />
-                                    </figure>
-                                </div>
-                                <div className='custom-file'>
-                                    <input
-                                        type='file'
-                                        name='avatar'
-                                        className='custom-file-input'
-                                        id='customFile'
-                                        accept="iamges/*"
-                                        onChange={onChange}
-                                    />
-                                    <label className='custom-file-label' htmlFor='customFile'>
-                                        Choose Avatar
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
 
                         <button
                             id="register_button"
