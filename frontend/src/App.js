@@ -13,6 +13,7 @@ import OrderDetails from './components/order/OrderDetails'
 import Login from './components/user/Login'
 import Register from './components/user/Register'
 import Profile from './components/user/Profile'
+import Cart from './components/cart/Cart'
 
 import ProtectedRoute from './components/route/ProtectedRoute'
 import { loadUser } from './actions/userActions'
@@ -36,6 +37,8 @@ function App() {
 
           <Route path = "/login" component = {Login}  />
           <Route path = "/register" component = {Register}  />
+          <Route path = "/cart" component = {Cart}/>
+
           <ProtectedRoute path = "/me" component = {Profile} exact />
           <ProtectedRoute path = "/orders/me" component = {ListOrders} exact />
           <ProtectedRoute path = "/orders/:id" component = {OrderDetails} exact />

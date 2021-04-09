@@ -10,10 +10,12 @@ import { getProductDetails, newReview, clearErrors } from '../../actions/product
 //import { getUserDetails } from '../../actions/userActions'
 //import { addItemToCart } from '../../actions/cartActions'
 import { NEW_REVIEW_RESET } from '../../constants/productConstants'
+import { addToCartReducer } from '../../reducers/cartReducers';
 
 const ProductDetails = ({ match }) => {
 
     const [rating, setRating] = useState(0);
+    const [bookCount, setBookCount] = useState(0);
     const [comment, setComment] = useState('');
 
     const dispatch = useDispatch();
@@ -26,6 +28,8 @@ const ProductDetails = ({ match }) => {
     //const{orders} = useSelector(state => state.orderDetails);
     //const {userdetails } = useSelector(state => state.userDetails)
     const { error: reviewError, success } = useSelector(state => state.newReview);
+
+    // const {addToCart} = useSelector(state => state.addToCart);
 
     useEffect(() => {
         dispatch(getProductDetails(match.params.id))
@@ -113,6 +117,17 @@ const ProductDetails = ({ match }) => {
         dispatch(newReview(formData));
     }
 
+    /*
+    CART COMPONENT
+    **/
+    function updateCart() {
+        dispatch(addToCartReducer({book: product, count: bookCount}));
+    }
+
+     /*
+    CART COMPONENT
+    **/
+
 
     return (
         <Fragment>
@@ -141,14 +156,16 @@ const ProductDetails = ({ match }) => {
             <hr/>
 
             <p id="product_price">${product.price}</p>
-            <div className="stockCounter d-inline">
-                <span className="btn btn-danger minus">-</span>
+             <div className="stockCounter d-inline">
+                
+                <span className="btn btn-danger minus" onClick={() => setBookCount(bookCount > 0 ? bookCount - 1 : bookCount)}>-</span>
 
-                <input type="number" className="form-control count d-inline" value="1" readOnly />
+                <input type="number" className="form-control count d-inline" value= {bookCount} readOnly />
 
-                <span className="btn btn-primary plus">+</span>
+                <span className="btn btn-primary plus" onClick={() => setBookCount(bookCount + 1)} >+</span>
             </div>
-             <button type="button" id="cart_btn" className="btn btn-primary d-inline ml-4">Add to Cart</button>
+             <button type="button" id="cart_btn" className="btn btn-primary d-inline ml-4"    
+              onClick={ () => updateCart() }>Add to Cart</button>
 
             <hr/>
 
@@ -265,3 +282,5 @@ const ProductDetails = ({ match }) => {
 }
 
 export default ProductDetails
+
+// export default connect(mapStateToProps, mapDispatchToProps())(BookDetails);

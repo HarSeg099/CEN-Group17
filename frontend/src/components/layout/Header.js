@@ -14,11 +14,20 @@ const Header = () => {
     const dispatch = useDispatch();
 
     const { user, loading } = useSelector(state => state.auth)
+    const { cart } = useSelector(state => state.cart);
    // const { cartItems } = useSelector(state => state.cart)
 
     const logoutHandler = () => {
         dispatch(logout());
         alert.success('Logged out successfully.')
+    }
+
+    const getItemCount = () => {
+        let sum = 0;
+        cart.forEach(element => {
+            sum += element.count;
+        });
+        return sum;
     }
     return (
         <Fragment>
@@ -38,7 +47,7 @@ const Header = () => {
                 <div className="col-12 col-md-3 mt-4 mt-md-0 text-center">
                     <Link to="/cart" style={{ textDecoration: 'none' }} >
                         <span id="cart" className="ml-3">Cart</span>
-                        <span className="ml-1" id="cart_count">0</span>
+                        <span className="ml-1" id="cart_count">{getItemCount()}</span>
                     </Link>
 
                     {user ? (

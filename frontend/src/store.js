@@ -5,6 +5,8 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 import { productsReducer, productDetailsReducer, newReviewReducer } from './reducers/productReducers'
 import { authReducer,userDetailsReducer } from './reducers/userReducers'
 import { newOrderReducer, myOrdersReducer, orderDetailsReducer, allOrdersReducer, orderReducer } from './reducers/orderReducers'
+import cartReducers, { addToCartReducer, changeBookCountReducer, deleteBookReducer } from './reducers/cartReducers';
+import wishListReducers, { addToWishListReducer, deleteFromWishListReducer } from './reducers/wishReducers';
 
 const reducer =combineReducers({
     products: productsReducer,
@@ -16,8 +18,14 @@ const reducer =combineReducers({
     allOrders: allOrdersReducer,
     orderDetails: orderDetailsReducer,
     order: orderReducer,
-    newReview: newReviewReducer
-   
+    newReview: newReviewReducer,
+    addToCart: addToCartReducer,
+    changeBookCount: changeBookCountReducer, 
+    deleteBook: deleteBookReducer,
+    cart: cartReducers,
+    addToWishList: addToWishListReducer,
+    deleteFromWishList: deleteFromWishListReducer,
+    wishList: wishListReducers
 })
 
 let initialState = {}
