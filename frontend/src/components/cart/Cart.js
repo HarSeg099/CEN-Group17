@@ -22,10 +22,11 @@ class Cart extends React.Component {
 
     priceTotal() {
         let subTotal = 0;
-        for (let i = 0; i < this.props.cart.length; i++) {
+        for (let i = 0; i < this.props.cart.cart.length; i++) {
             let totalPrice = 0;
-            totalPrice = this.props.cart[i].book.price * this.props.cart[i].count;
+            totalPrice = this.props.cart.cart[i].book.price * this.props.cart.cart[i].count;
             subTotal += totalPrice;
+            console.log(this.props.cart.cart[i].book.price);
         }
 
         return subTotal
